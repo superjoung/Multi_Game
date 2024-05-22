@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class RouletteDate
@@ -71,6 +72,14 @@ public class GameManager : MonoBehaviour
 
     // Mode Bachingko
     public GameObject bachingkoPanel;
+    public GameObject bachingkoBox;
+    public TMP_Text getText;
+
+    public List<BachingkoRollBar> bachingkoRollBars;
+    public enum EBachinState { Begin, End, Continue, None };
+    public EBachinState BachinState = EBachinState.None;
+
+    private int selectCount = 0;
 
     private void Start()
     {
@@ -107,6 +116,10 @@ public class GameManager : MonoBehaviour
             // 바칭코
             case 2:
                 titleText.text = "행운의 777";
+                getText.text = "";
+                bachingkoBox.SetActive(true);
+                bachingkoPanel.SetActive(true);
+                selectCount = 0;
                 break;
             default:
                 break;
@@ -153,6 +166,44 @@ public class GameManager : MonoBehaviour
                 break;
             // 바칭코
             case 2:
+                if(playerTouch == ETouchState.Begin)
+                {
+                    if (BachinState == EBachinState.None) BachinState = EBachinState.Begin;
+                    else if (BachinState == EBachinState.Continue)
+                    {
+                        bachingkoRollBars[selectCount].rollState = BachingkoRollBar.ERollState.Stop;
+                        selectCount++;
+                        if(selectCount == 3)
+                        {
+                            BachinState = EBachinState.End;
+                        }
+                    }
+                }
+
+                if(playerTouch == ETouchState.End)
+                {
+                    if(BachinState == EBachinState.Begin)
+                    {
+                        BachinState = EBachinState.Continue;
+                        foreach (BachingkoRollBar child in bachingkoRollBars)
+                        {
+                            child.rollState = BachingkoRollBar.ERollState.Roll;
+                        }
+                    }
+
+                    if(BachinState == EBachinState.End)
+                    {
+                        if (bachingkoRollBars[0].selectData.description.Contains(bachingkoRollBars[1].selectData.description) && bachingkoRollBars[0].selectData.description.Contains(bachingkoRollBars[2].selectData.description))
+                        {
+                            getText.text = "<color=yellow> " + bachingkoRollBars[0].selectData.description + "</color>를 얻으셨습니다";
+                        }
+                        else
+                        {
+                            getText.text = "꽝! 다음 기회에.... ㅋ";
+                        }
+                        selectCount = 0;
+                    }
+                }
                 break;
             default:
                 break;
@@ -268,6 +319,11 @@ public class GameManager : MonoBehaviour
     {
         RouletteState = ERouletteState.None;
         GetItemText.text = "<color=yellow> " + selectedData.description + "</color>를 얻으셨습니다!!";
+    }
+
+    public void ExitButtonClick()
+    {
+        SceneManager.LoadScene(1);
     }
 
     IEnumerator OnSpin(float end, UnityAction<RouletteDate> action)
