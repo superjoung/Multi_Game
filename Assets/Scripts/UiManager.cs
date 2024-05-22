@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UiManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class UiManager : MonoBehaviour
 
     // Scene 2
     public GameObject infoPanel;
+    public GameObject gameSelectPanel;
+    public List<GameObject> printObjects = new List<GameObject>();
+    public GameObject printView;
 
     public void Start()
     {
@@ -42,6 +46,20 @@ public class UiManager : MonoBehaviour
 
     public void GameModeButtonClick()
     {
+        if (!gameSelectPanel.activeSelf)
+        {
+            gameSelectPanel.SetActive(true);
+        }
+        else
+        {
+            gameSelectPanel.SetActive(false);
+        }
+    }
+
+    public void GameSelect(int index)
+    {
+        // 0 ¡÷ªÁ¿ß, 1 ∑Í∑ø, 2 777
+        PlayerPrefs.SetInt("GameMode", index);
         SceneManager.LoadScene(2);
     }
 
@@ -60,5 +78,12 @@ public class UiManager : MonoBehaviour
     public void HooneJaButtonClick()
     {
 
+    }
+
+    public void HeadInfoButtonClick(int index)
+    {
+        foreach(GameObject child in printObjects) child.SetActive(false);
+        printObjects[index].SetActive(true);
+        printView.GetComponent<ScrollRect>().content = printObjects[index].GetComponent<RectTransform>();
     }
 }

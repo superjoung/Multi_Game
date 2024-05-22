@@ -663,7 +663,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 34, y: 34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1275625348
 MonoBehaviour:
@@ -679,7 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -816,6 +816,10 @@ MonoBehaviour:
   startButton: {fileID: 1821851598}
   fadeTime: 1
   moveTime: 1
+  infoPanel: {fileID: 0}
+  gameSelectPanel: {fileID: 0}
+  printObjects: []
+  printView: {fileID: 0}
 --- !u!4 &1415978179
 Transform:
   m_ObjectHideFlags: 0
@@ -1084,7 +1088,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1821851601}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1415978178}
+        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+        m_MethodName: StartButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1821851601
 MonoBehaviour:
   m_ObjectHideFlags: 0
