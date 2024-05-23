@@ -168,7 +168,11 @@ public class GameManager : MonoBehaviour
             case 2:
                 if(playerTouch == ETouchState.Begin)
                 {
-                    if (BachinState == EBachinState.None) BachinState = EBachinState.Begin;
+                    if (BachinState == EBachinState.None)
+                    {
+                        getText.text = "";
+                        BachinState = EBachinState.Begin;
+                    }
                     else if (BachinState == EBachinState.Continue)
                     {
                         bachingkoRollBars[selectCount].rollState = BachingkoRollBar.ERollState.Stop;
@@ -201,6 +205,7 @@ public class GameManager : MonoBehaviour
                         {
                             getText.text = "꽝! 다음 기회에.... ㅋ";
                         }
+                        BachinState = EBachinState.None;
                         selectCount = 0;
                     }
                 }
