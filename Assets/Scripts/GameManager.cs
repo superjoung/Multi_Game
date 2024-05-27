@@ -170,8 +170,17 @@ public class GameManager : MonoBehaviour
                 {
                     if (BachinState == EBachinState.None)
                     {
+                        foreach(BachingkoRollBar child in bachingkoRollBars)
+                        {
+                            foreach(GameObject barChild in child.slots)
+                            {
+                                barChild.transform.position = barChild.GetComponent<BachingkoData>().firstPos;
+                            }
+                            child.Initialized();
+                        }
                         getText.text = "";
                         BachinState = EBachinState.Begin;
+                        
                     }
                     else if (BachinState == EBachinState.Continue)
                     {
@@ -197,7 +206,7 @@ public class GameManager : MonoBehaviour
 
                     if(BachinState == EBachinState.End)
                     {
-                        if (bachingkoRollBars[0].selectData.description.Contains(bachingkoRollBars[1].selectData.description) && bachingkoRollBars[0].selectData.description.Contains(bachingkoRollBars[2].selectData.description))
+                        if (bachingkoRollBars[0].selectData.index == bachingkoRollBars[1].selectData.index && bachingkoRollBars[0].selectData.index == bachingkoRollBars[2].selectData.index)
                         {
                             getText.text = "<color=yellow> " + bachingkoRollBars[0].selectData.description + "</color>를 얻으셨습니다";
                         }
