@@ -3014,12 +3014,12 @@ MonoBehaviour:
   playerTouch: 0
   titleText: {fileID: 486085819}
   dices:
-  - {fileID: 21300000, guid: 42a383c7145c90d4c9e9433678d119eb, type: 3}
-  - {fileID: 21300000, guid: f2b8c1edc8ba2a34fbd6cfbef47ebf9b, type: 3}
-  - {fileID: 21300000, guid: f27f6126d93c2054fa849235544eab6d, type: 3}
-  - {fileID: 21300000, guid: 92c6dac2cc4d89246a6ad5518a0b0cd2, type: 3}
-  - {fileID: 21300000, guid: 3cff59aa784b2ab42917eb0b73a30877, type: 3}
-  - {fileID: 21300000, guid: 967c6316602e7bf4b9a71cc887e9874f, type: 3}
+  - {fileID: 21300000, guid: 83ee8600bb10d124fb11fb5e4e28475b, type: 3}
+  - {fileID: 21300000, guid: 99f8d8a07b49b9f43a88f03d8d2104a9, type: 3}
+  - {fileID: 21300000, guid: 92f10a1493824ad4d99c27f8d2fbbb04, type: 3}
+  - {fileID: 21300000, guid: d207f57c7aec71f4199824d901e72808, type: 3}
+  - {fileID: 21300000, guid: a95c27a639559204cbe235aac2daeca9, type: 3}
+  - {fileID: 21300000, guid: 17038d795555756408d3d37cb858be38, type: 3}
   dice: {fileID: 1661052039}
   hideEffectPanel: {fileID: 1572642148}
   canDice: 1
@@ -3730,7 +3730,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 42a383c7145c90d4c9e9433678d119eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83ee8600bb10d124fb11fb5e4e28475b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
