@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -96,26 +96,26 @@ public class GameManager : MonoBehaviour
     {
         switch (PlayerPrefs.GetInt("GameMode"))
         {
-            // ¡÷ªÁ¿ß
+            // Ï£ºÏÇ¨ÏúÑ
             case 0:
                 dice.SetActive(true);
                 firstPos = dice.transform.position;
-                titleText.text = "¡÷ªÁ¿ß ∞‘¿”";
+                titleText.text = "Ï£ºÏÇ¨ÏúÑ Í≤åÏûÑ";
                 break;
-            // ∑Í∑ø
+            // Î£∞Î†õ
             case 1:
                 RoulettePanel.SetActive(true);
                 GetItemText.text = "";
-                titleText.text = "∑Í∑ø ∞‘¿”";
+                titleText.text = "Î£∞Î†õ Í≤åÏûÑ";
                 pieceAngle = 360 / rouletteDate.Length;
                 halfPieceAngle = pieceAngle * 0.5f;
                 halfPieceAngleWithPaddings = halfPieceAngle - (halfPieceAngle * 0.25f);
                 SpawnPieceLine();
                 CalculateWaightIndicate();
                 break;
-            // πŸƒ™ƒ⁄
+            // Î∞îÏπ≠ÏΩî
             case 2:
-                titleText.text = "«‡øÓ¿« 777";
+                titleText.text = "ÌñâÏö¥Ïùò 777";
                 getText.text = "";
                 bachingkoBox.SetActive(true);
                 bachingkoPanel.SetActive(true);
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
     {
         switch (PlayerPrefs.GetInt("GameMode"))
         {
-            // ¡÷ªÁ¿ß
+            // Ï£ºÏÇ¨ÏúÑ
             case 0:
                 if (playerTouch == ETouchState.Begin)
                 {
@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
                     DiceAction();
                 }
                 break;
-            // ∑Í∑ø
+            // Î£∞Î†õ
             case 1:
                 if(playerTouch == ETouchState.Begin)
                 {
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
                 break;
-            // πŸƒ™ƒ⁄
+            // Î∞îÏπ≠ÏΩî
             case 2:
                 if(playerTouch == ETouchState.Begin)
                 {
@@ -208,11 +208,11 @@ public class GameManager : MonoBehaviour
                     {
                         if (bachingkoRollBars[0].selectData.index == bachingkoRollBars[1].selectData.index && bachingkoRollBars[0].selectData.index == bachingkoRollBars[2].selectData.index)
                         {
-                            getText.text = "<color=yellow> " + bachingkoRollBars[0].selectData.description + "</color>∏¶ æÚ¿∏ºÃΩ¿¥œ¥Ÿ";
+                            getText.text = "<color=yellow> " + bachingkoRollBars[0].selectData.description + "</color>Î•º ÏñªÏúºÏÖ®ÏäµÎãàÎã§";
                         }
                         else
                         {
-                            getText.text = "≤Œ! ¥Ÿ¿Ω ±‚»∏ø°.... §ª";
+                            getText.text = "ÍΩù! Îã§Ïùå Í∏∞ÌöåÏóê.... „Öã";
                         }
                         BachinState = EBachinState.None;
                         selectCount = 0;
@@ -332,7 +332,7 @@ public class GameManager : MonoBehaviour
     private void EndOfSpin(RouletteDate selectedData)
     {
         RouletteState = ERouletteState.None;
-        GetItemText.text = "<color=yellow> " + selectedData.description + "</color>∏¶ æÚ¿∏ºÃΩ¿¥œ¥Ÿ!!";
+        GetItemText.text = "<color=yellow> " + selectedData.description + "</color>Î•º ÏñªÏúºÏÖ®ÏäµÎãàÎã§!!";
     }
 
     public void ExitButtonClick()
